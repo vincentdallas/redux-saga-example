@@ -1,11 +1,16 @@
-import { delay } from "redux-saga";
-import { takeLatest, put } from "redux-saga/effects";
+import {call, put, takeLatest, takeEvery } from "redux-saga/effects";
+import {request_api_data, requestApiData} from "../store/actions";
+import {fetchData} from '../api';
 
-function* ageUpAsync() {
-  yield delay(4000);
-  yield put({ type: "AGE_UP_ASYNC", value: 1 });
+function* getApiData(action) {
+  try{
+    const data =yield call(fetchData);
+    yield put(requestApiData(data));
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-export function* watchAgeUp() {
-  yield takeLatest("AGE_UP", ageUpAsync);
+export default function* mySaga() {
+  yield takeLatest(request_api_data, getApiData);
 }

@@ -7,12 +7,12 @@ import reducer from "./store/reducer";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import createSagaMiddleware from "redux-saga";
-import { watchAgeUp } from "./sagas/saga";
+import mySaga from "./sagas/saga";
 
 const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
-sagaMiddleware.run(watchAgeUp);
+sagaMiddleware.run(mySaga);
 ReactDOM.render(
   <Provider store={store}>
     <App />

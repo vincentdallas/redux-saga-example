@@ -6,5 +6,6 @@ from the command prompt clone the project
 * $cd react-saga-example
 * $npm install
 * $npm start
+ yarn add redux-sage
 
 [Watch the Tutorial](https://youtu.be/eUMbH6X_Adc).
